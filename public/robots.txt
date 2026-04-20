@@ -1,0 +1,13 @@
+# Nex-Gen AutoDetail robots.txt
+# Allow all search engines to crawl
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+
+# Sitemap
+Sitemap: https://nexgenautodetail.com/sitemap.xml
+
+# Crawl delay (optional - prevents server overload)
+Crawl-delay: 1

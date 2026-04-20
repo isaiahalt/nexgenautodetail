@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Gabriel
+Location: Ohio, USA
+
+/* THANKS */
+Thanks to all our clients and supporters!
+
+/* SITE */
+Last Updated: 2026-04-20
+Standards: HTML5, CSS3, JavaScript
+Components: React, Next.js
+Hosting: Vercel
