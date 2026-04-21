@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 
 const aboutImages = [
@@ -47,14 +47,18 @@ function AboutImageSlider() {
 
       {/* Navigation Buttons */}
       <button
+        type="button"
         onClick={prevImage}
-        className="absolute left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/20 text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/40 z-20"
+        aria-label="Show previous image"
+        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-1.5 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
+        type="button"
         onClick={nextImage}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/20 text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/40 z-20"
+        aria-label="Show next image"
+        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-1.5 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
@@ -63,8 +67,10 @@ function AboutImageSlider() {
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
         {aboutImages.map((_, index) => (
           <button
+            type="button"
             key={index}
             onClick={() => setCurrentImage(index)}
+            aria-label={`Show image ${index + 1}`}
             className={`w-2 h-2 rounded-full transition-all ${index === currentImage ? 'bg-primary scale-125' : 'bg-white/60'}`}
           />
         ))}
