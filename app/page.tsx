@@ -8,15 +8,29 @@ import { Pricing } from "@/components/pricing"
 import { Reviews } from "@/components/reviews"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { siteConfig } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Nex-Gen AutoDetail | Premium Car Detailing Services in Ohio',
-  description: 'Experience premium car detailing services in Trumbull & Mahoning Counties, Ohio. Professional interior detailing, paint decontamination, protective wax coating, and mobile detailing. Serving Howland, Warren, Boardman, and Canfield.',
+  title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+  description:
+    'Book mobile auto detailing from Nex-Gen AutoDetail for interior deep cleaning, exterior wash packages, paint decontamination, steam cleaning, and wax protection in Howland, Warren, Boardman, and Canfield.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Nex-Gen AutoDetail | Premium Car Detailing Services',
-    description: 'Professional car detailing services in Ohio. Paint decontamination, interior detailing, protective wax coating, and mobile service.',
-    url: 'https://nexgenautodetail.com',
+    title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    description:
+      'Professional mobile detailing for interiors, exteriors, clay bar treatment, steam cleaning, and wax protection across Trumbull and Mahoning Counties.',
+    url: siteConfig.baseUrl,
     type: 'website',
+    images: [siteConfig.ogImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    description:
+      'Interior detailing, exterior wash packages, paint decontamination, and wax protection from Nex-Gen AutoDetail.',
+    images: [siteConfig.ogImage],
   },
 }
 

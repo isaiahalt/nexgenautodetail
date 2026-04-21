@@ -7,6 +7,15 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Terms of Service | Nex-Gen AutoDetail",
   description: "Terms of Service for Nex-Gen AutoDetail. Read our terms and conditions for using our auto detailing services.",
+  alternates: {
+    canonical: "/terms-of-service",
+  },
+  openGraph: {
+    title: "Terms of Service | Nex-Gen AutoDetail",
+    description: "Terms of Service for Nex-Gen AutoDetail. Read our terms and conditions for using our auto detailing services.",
+    url: "https://nexgenautodetail.com/terms-of-service",
+    type: "article",
+  },
 }
 
 export default function TermsOfServicePage() {

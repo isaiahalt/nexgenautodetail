@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { siteConfig } from '@/lib/seo'
 import './globals.css'
 
 const inter = Inter({ 
@@ -14,12 +15,26 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Nex-Gen AutoDetail | Premium Car Detailing Services in Ohio',
-  description: 'Experience premium car detailing services in Trumbull & Mahoning Counties, Ohio. Professional interior detailing, paint decontamination, protective wax coating, and mobile detailing. Serving Howland, Warren, Boardman, and Canfield.',
-  keywords: 'car detailing, auto detailing, paint decontamination, interior cleaning, protective wax, mobile detailing, car maintenance, Howland OH, Warren OH, Boardman OH, Canfield OH, professional car care',
-  authors: [{ name: 'Nex-Gen AutoDetail' }],
-  creator: 'Nex-Gen AutoDetail',
-  publisher: 'Nex-Gen AutoDetail',
+  metadataBase: new URL(siteConfig.baseUrl),
+  title: {
+    default: 'Nex-Gen AutoDetail | Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    template: '%s | Nex-Gen AutoDetail',
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  applicationName: siteConfig.name,
+  category: 'Automotive',
+  alternates: {
+    canonical: '/',
+  },
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: true,
+  },
   robots: {
     index: true,
     follow: true,
@@ -31,31 +46,28 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  metadataBase: new URL('https://nexgenautodetail.com'),
-  canonical: 'https://nexgenautodetail.com',
   openGraph: {
-    title: 'Nex-Gen AutoDetail | Premium Car Detailing Services',
-    description: 'Professional car detailing services in Trumbull & Mahoning Counties, Ohio. Paint decontamination, interior detailing, protective wax coating, and mobile service.',
+    title: 'Nex-Gen AutoDetail | Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    description: siteConfig.description,
     type: 'website',
-    url: 'https://nexgenautodetail.com',
-    siteName: 'Nex-Gen AutoDetail',
+    url: siteConfig.baseUrl,
+    siteName: siteConfig.name,
     locale: 'en_US',
     images: [
       {
-        url: '/images/hero-car.jpg',
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Premium car detailing service',
+        alt: 'Nex-Gen AutoDetail mobile auto detailing service in Ohio',
         type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nex-Gen AutoDetail | Premium Car Detailing Services',
-    description: 'Professional car detailing in Ohio. Paint protection, interior cleaning, and mobile service.',
-    creator: '@nexgenautodetail',
-    images: ['/images/hero-car.jpg'],
+    title: 'Nex-Gen AutoDetail | Mobile Auto Detailing in Ohio',
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   icons: {
     icon: [
@@ -76,6 +88,12 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,26 +102,14 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://nexgenautodetail.com',
-    name: 'Nex-Gen AutoDetail',
-    description: 'Professional mobile car detailing services in Trumbull & Mahoning Counties, Ohio',
-    url: 'https://nexgenautodetail.com',
-    telephone: '+1-330-984-8257',
-    email: 'info@nexgenautodetail.com',
-    image: 'https://nexgenautodetail.com/images/hero-car.jpg',
-    sameAs: [
-      'https://www.facebook.com/profile.php?id=61573746522597',
-      'https://www.tiktok.com/@nexgenautodetailing',
-      'https://instagram.com/nexgenautodetail',
-    ],
+    '@id': `${siteConfig.baseUrl}/#business`,
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.baseUrl,
+    telephone: siteConfig.phone,
+    image: `${siteConfig.baseUrl}${siteConfig.ogImage}`,
+    sameAs: siteConfig.sameAs,
     priceRange: '$$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Serving Howland, Warren, Boardman & Canfield',
-      addressLocality: 'Trumbull & Mahoning Counties',
-      addressRegion: 'OH',
-      addressCountry: 'US',
-    },
     areaServed: [
       {
         '@type': 'City',
@@ -122,10 +128,50 @@ export default function RootLayout({
         name: 'Canfield',
       },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      reviewCount: '1',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: siteConfig.phone,
+      contactType: 'customer service',
+      areaServed: 'US-OH',
+      availableLanguage: 'en',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Auto detailing packages',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Full Interior',
+            description: 'Deep plastic steam cleaning, leather and vinyl protection, seat and carpet shampooing, and odor elimination.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Full Exterior',
+            description: 'Hand wash, wheel cleaning, bug removal, iron decontamination, clay bar treatment, sealant wax, and trim restoration.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Full Makeover',
+            description: 'Combined interior and exterior premium detailing package for a full vehicle refresh.',
+          },
+        },
+      ],
     },
   }
 
@@ -136,9 +182,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="canonical" href="https://nexgenautodetail.com" />
       </head>
       <body className="font-sans antialiased">
         {children}

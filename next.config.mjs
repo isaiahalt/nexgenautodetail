@@ -6,20 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async redirects() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemap.xml',
-        permanent: true,
-      },
-      {
-        source: '/robots.txt',
-        destination: '/robots.txt',
-        permanent: true,
-      },
-    ]
-  },
   async headers() {
     return [
       {
@@ -48,3 +34,4 @@ const nextConfig = {
 }
 
 export default nextConfig
+
