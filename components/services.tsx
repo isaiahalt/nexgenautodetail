@@ -49,17 +49,33 @@ function AutoImageSlider() {
       ))}
 
       {/* Manual Navigation */}
-      <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/20 text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/40 z-20">
+      <button
+        type="button"
+        onClick={prevImage}
+        aria-label="Show previous image"
+        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
+      >
         <ChevronLeft className="h-6 w-6" />
       </button>
-      <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/20 text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/40 z-20">
+      <button
+        type="button"
+        onClick={nextImage}
+        aria-label="Show next image"
+        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
+      >
         <ChevronRight className="h-6 w-6" />
       </button>
 
       {/* Dots */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {detailImages.map((_, index) => (
-          <button key={index} onClick={() => setCurrentImage(index)} className={`h-2 rounded-full transition-all ${index === currentImage ? 'bg-white w-6' : 'bg-white/50 w-2'}`} />
+          <button
+            type="button"
+            key={index}
+            onClick={() => setCurrentImage(index)}
+            aria-label={`Show image ${index + 1}`}
+            className={`h-2 rounded-full transition-all ${index === currentImage ? 'bg-white w-6' : 'bg-white/50 w-2'}`}
+          />
         ))}
       </div>
     </div>
