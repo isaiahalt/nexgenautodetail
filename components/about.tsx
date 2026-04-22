@@ -41,7 +41,13 @@ function AboutImageSlider() {
           }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
         >
-          <Image src={image} alt={`Detailing showcase ${index + 1}`} fill className="object-cover" />
+          <Image
+            src={image}
+            alt={`Detailing showcase ${index + 1}`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
         </motion.div>
       ))}
 
@@ -50,7 +56,7 @@ function AboutImageSlider() {
         type="button"
         onClick={prevImage}
         aria-label="Show previous image"
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-1.5 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
+        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -58,7 +64,7 @@ function AboutImageSlider() {
         type="button"
         onClick={nextImage}
         aria-label="Show next image"
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-1.5 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
+        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/20 p-2 text-white opacity-100 backdrop-blur-sm transition-opacity hover:bg-black/40 md:opacity-0 md:group-hover:opacity-100"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
@@ -71,7 +77,7 @@ function AboutImageSlider() {
             key={index}
             onClick={() => setCurrentImage(index)}
             aria-label={`Show image ${index + 1}`}
-            className={`w-2 h-2 rounded-full transition-all ${index === currentImage ? 'bg-primary scale-125' : 'bg-white/60'}`}
+            className={`w-3 h-3 rounded-full transition-all ${index === currentImage ? 'bg-primary scale-110' : 'bg-white/70'}`}
           />
         ))}
       </div>

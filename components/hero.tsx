@@ -1,11 +1,11 @@
 "use client"
 
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles, Shield, Clock } from "lucide-react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 
 const features = [
   {
@@ -26,58 +26,65 @@ const features = [
 ]
 
 export function Hero() {
+  const reduceMotion = useReducedMotion()
   const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  })
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const [particles, setParticles] = useState<{ x: number; y: number; duration: number; delay: number }[]>([])
+
+  useEffect(() => {
+    if (reduceMotion) {
+      setParticles([])
+      return
+    }
+
+    setParticles(
+      Array.from({ length: 8 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        duration: 4 + Math.random() * 2,
+        delay: Math.random() * 2,
+      }))
+    )
+  }, [reduceMotion])
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background Image with Parallax */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-car.jpg"
           alt="Premium car detailing"
           fill
           className="object-cover scale-110"
+          sizes="100vw"
+          quality={85}
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
-      </motion.div>
+      </div>
 
       {/* Animated Particles */}
       <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary/30 rounded-full"
-            initial={{
-              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
-            }}
+            initial={{ x: p.x, y: p.y }}
             animate={{
               y: [null, -20, 20],
               opacity: [0.2, 0.8, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: p.duration,
               repeat: Infinity,
               repeatType: "reverse",
-              delay: Math.random() * 2,
+              delay: p.delay,
             }}
           />
         ))}
       </div>
 
-      <motion.div
-        className="container mx-auto px-4 relative z-10"
-        style={{ y: textY, opacity }}
-      >
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl">
           {/* Badge */}
           <motion.div
@@ -197,7 +204,7 @@ export function Hero() {
             ))}
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div
@@ -208,14 +215,14 @@ export function Hero() {
       >
         <motion.div
           className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2 cursor-pointer"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+          transition={reduceMotion ? undefined : { duration: 1.5, repeat: Infinity }}
           whileHover={{ borderColor: "hsl(var(--primary))" }}
         >
           <motion.div
             className="w-1 h-2 rounded-full bg-primary"
-            animate={{ opacity: [1, 0.5, 1], y: [0, 4, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={reduceMotion ? undefined : { opacity: [1, 0.5, 1], y: [0, 4, 0] }}
+            transition={reduceMotion ? undefined : { duration: 1.5, repeat: Infinity }}
           />
         </motion.div>
       </motion.div>

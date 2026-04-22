@@ -1,14 +1,18 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
-import { Services } from "@/components/services"
-import { BeforeAfterSlider } from "@/components/before-after-slider"
-import { Pricing } from "@/components/pricing"
-import { Reviews } from "@/components/reviews"
-import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { siteConfig } from '@/lib/seo'
+
+const Services = dynamic(() => import("@/components/services").then((mod) => mod.Services))
+const BeforeAfterSlider = dynamic(() =>
+  import("@/components/before-after-slider").then((mod) => mod.BeforeAfterSlider)
+)
+const About = dynamic(() => import("@/components/about").then((mod) => mod.About))
+const Pricing = dynamic(() => import("@/components/pricing").then((mod) => mod.Pricing))
+const Reviews = dynamic(() => import("@/components/reviews").then((mod) => mod.Reviews))
+const Contact = dynamic(() => import("@/components/contact").then((mod) => mod.Contact))
 
 export const metadata: Metadata = {
   title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',

@@ -100,7 +100,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2.5 text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.95 }}
@@ -151,7 +151,7 @@ export function Header() {
                   >
                     <Link
                       href={link.href}
-                      className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-2 block"
+                      className="text-base font-medium text-muted-foreground hover:text-primary transition-colors py-3 block"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.label}
@@ -160,7 +160,7 @@ export function Header() {
                 ))}
                 <motion.a
                   href="tel:+13309848257"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                  className="flex items-center gap-2 text-base text-muted-foreground hover:text-primary transition-colors py-3"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
@@ -173,7 +173,7 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35 }}
                 >
-                  <Button asChild className="mt-2 w-full">
+                  <Button asChild className="mt-2 h-11 w-full">
                     <Link href="#contact" onClick={() => setIsMenuOpen(false)}>
                       Book Now
                     </Link>

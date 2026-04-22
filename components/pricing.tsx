@@ -1,9 +1,17 @@
 "use client"
 
-import { useRef } from "react"
-import Link from "next/link"
+import { useRef, useState } from "react"
 import { Check, Diamond, RotateCcw } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { cn } from "@/lib/utils"
 import { motion, useInView } from "framer-motion"
 
@@ -77,6 +85,20 @@ export function Pricing() {
   const headerInView = useInView(headerRef, { once: true, margin: "-100px" })
   const packagesInView = useInView(packagesRef, { once: true, margin: "-50px" })
   const specialInView = useInView(specialRef, { once: true, margin: "-50px" })
+  const [maintenanceDialogOpen, setMaintenanceDialogOpen] = useState(false)
+
+  function handleMaintenanceBook() {
+    setMaintenanceDialogOpen(true)
+  }
+
+  function scrollToContact() {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  function handleMaintenanceConfirm() {
+    setMaintenanceDialogOpen(false)
+    scrollToContact()
+  }
 
   return (
     <section id="pricing" className="py-24 bg-card overflow-hidden">
@@ -167,9 +189,9 @@ export function Pricing() {
                 <Button
                   variant={pkg.recommended ? "default" : "outline"}
                   className="w-full"
-                  asChild
+                  onClick={scrollToContact}
                 >
-                  <Link href="#contact">Book Now</Link>
+                  Book Now
                 </Button>
               </motion.div>
             </motion.div>
@@ -233,14 +255,34 @@ export function Pricing() {
                 ))}
               </ul>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="relative z-10">
-                <Button className="w-full" asChild>
-                  <Link href="#contact">Book Now</Link>
-                </Button>
+                {pkg.id === "maintenance" ? (
+                  <Button className="w-full" onClick={handleMaintenanceBook}>
+                    Book Now
+                  </Button>
+                ) : (
+                  <Button className="w-full" onClick={scrollToContact}>
+                    Book Now
+                  </Button>
+                )}
               </motion.div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AlertDialog open={maintenanceDialogOpen} onOpenChange={setMaintenanceDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Please Note</AlertDialogTitle>
+            <AlertDialogDescription>
+              This maintenance detail is only available for newer or regularly maintained vehicles. We reserve the right to decline service for vehicles that do not meet this standard.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={handleMaintenanceConfirm}>OK</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   )
 }

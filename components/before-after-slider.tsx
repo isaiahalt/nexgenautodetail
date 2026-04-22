@@ -105,6 +105,7 @@ function SliderItem({ image, index }: SliderItemProps) {
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 33vw"
+            loading={image.after === "/images/clean.jpg" ? "eager" : "lazy"}
             draggable={false}
           />
           <div className="absolute bottom-4 right-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
