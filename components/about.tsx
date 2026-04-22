@@ -131,7 +131,7 @@ export function About() {
           {/* Content */}
           <div>
             <motion.p className="text-primary font-medium mb-4" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}}>About Us</motion.p>
-            <motion.h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }}>Mobile Car Detailing Excellence</motion.h2>
+            <motion.h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.1 }}>Premium Car Detailing Excellence</motion.h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
               Discover the pinnacle of automotive care. With an unwavering commitment to perfection, 
               we set the standard for meticulous craftsmanship and unparalleled customer service.
