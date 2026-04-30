@@ -2,8 +2,8 @@ export const siteConfig = {
   name: 'Nex-Gen AutoDetail',
   baseUrl: 'https://nexgenautodetail.com',
   description:
-    'Mobile auto detailing in Trumbull and Mahoning Counties, Ohio, with interior detailing, exterior wash packages, paint decontamination, steam cleaning, and protective wax services.',
-  ogImage: '/images/hero-car.jpg',
+    'premium auto detailing in Trumbull and Mahoning Counties, Ohio, with interior detailing, exterior wash packages, paint decontamination, steam cleaning, and protective wax services.',
+  ogImage: '/apple-icon.png',
   phone: '+1-330-984-8257',
   serviceArea: 'Trumbull & Mahoning Counties, OH',
   hours: 'Mon - Sat: 8am - 6pm',
@@ -13,7 +13,7 @@ export const siteConfig = {
     'https://instagram.com/nexgenautodetail',
   ],
   keywords: [
-    'mobile auto detailing ohio',
+    'premium auto detailing ohio',
     'car detailing trumbull county',
     'car detailing mahoning county',
     'interior detailing howland oh',

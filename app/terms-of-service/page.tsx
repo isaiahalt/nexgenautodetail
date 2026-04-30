@@ -60,7 +60,7 @@ export default function TermsOfServicePage() {
                   2. Services
                 </h2>
                 <p className="mb-4 leading-relaxed text-muted-foreground">
-                  Nex-Gen AutoDetail provides mobile auto detailing services including but not limited to:
+                  Nex-Gen AutoDetail provides premium auto detailing services including but not limited to:
                 </p>
                 <ul className="mb-4 list-disc space-y-2 pl-6 text-muted-foreground">
                   <li>Exterior washing and detailing</li>
