@@ -29,7 +29,7 @@ const defaultImages: BeforeAfterImage[] = [
   {
     before: "/images/vibebef.jpg",
     after: "/images/vibeaft.jpg",
-    label: "Wheel & Tire Detail",
+    label: "Full Interior",
   },
 ]
 

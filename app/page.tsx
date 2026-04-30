@@ -15,23 +15,23 @@ const Reviews = dynamic(() => import("@/components/reviews").then((mod) => mod.R
 const Contact = dynamic(() => import("@/components/contact").then((mod) => mod.Contact))
 
 export const metadata: Metadata = {
-  title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+  title: 'Premium Auto Detailing in Trumbull & Mahoning Counties, Ohio',
   description:
-    'Book mobile auto detailing from Nex-Gen AutoDetail for interior deep cleaning, exterior wash packages, paint decontamination, steam cleaning, and wax protection in Howland, Warren, Boardman, and Canfield.',
+    'Book Premium auto detailing from Nex-Gen AutoDetail for interior deep cleaning, exterior wash packages, paint decontamination, steam cleaning, and wax protection in Howland, Warren, Boardman, and Canfield.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    title: 'Premium Auto Detailing in Trumbull & Mahoning Counties, Ohio',
     description:
-      'Professional mobile detailing for interiors, exteriors, clay bar treatment, steam cleaning, and wax protection across Trumbull and Mahoning Counties.',
+      'Premium Auto detailing for interiors, exteriors, clay bar treatment, steam cleaning, and wax protection across Trumbull and Mahoning Counties.',
     url: siteConfig.baseUrl,
     type: 'website',
     images: [siteConfig.ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    title: 'Premium Auto Detailing in Trumbull & Mahoning Counties, Ohio',
     description:
       'Interior detailing, exterior wash packages, paint decontamination, and wax protection from Nex-Gen AutoDetail.',
     images: [siteConfig.ogImage],

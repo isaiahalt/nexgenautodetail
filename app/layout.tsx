@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
   title: {
-    default: 'Nex-Gen AutoDetail | Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    default: 'Nex-Gen AutoDetail | Premium Auto Detailing in Trumbull & Mahoning Counties, Ohio',
     template: '%s | Nex-Gen AutoDetail',
   },
   description: siteConfig.description,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Nex-Gen AutoDetail | Mobile Auto Detailing in Trumbull & Mahoning Counties, Ohio',
+    title: 'Nex-Gen AutoDetail | Premium Auto Detailing in Trumbull & Mahoning Counties, Ohio',
     description: siteConfig.description,
     type: 'website',
     url: siteConfig.baseUrl,
@@ -58,14 +58,14 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Nex-Gen AutoDetail mobile auto detailing service in Ohio',
+        alt: 'Nex-Gen AutoDetail Premium auto detailing service in Ohio',
         type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nex-Gen AutoDetail | Mobile Auto Detailing in Ohio',
+    title: 'Nex-Gen AutoDetail | Premium Auto Detailing in Ohio',
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
